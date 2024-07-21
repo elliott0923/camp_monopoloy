@@ -25,6 +25,22 @@ const Map = () => {
             userSelect: "none",
           }}
         />
+        <img
+          src="/B1.jpg"
+          alt="Map"
+          style={{
+            maxWidth: "100%",
+            userSelect: "none",
+          }}
+        />
+        <img
+          src="/2F.jpg"
+          alt="Map"
+          style={{
+            maxWidth: "100%",
+            userSelect: "none",
+          }}
+        />
       </Box>
     </Container>
   );

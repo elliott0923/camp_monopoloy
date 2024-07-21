@@ -450,6 +450,45 @@ router.post("/sellResource", async (req, res) => {
   res.json("Success").status(200);
 });
 
+router.post("/percent", async (req, res) => {
+  try {
+    // Fetch all teams
+    const teams = await Team.find();
+
+    // Update each team's money by reducing it by 30%
+    teams.forEach(async (team) => {
+      team.money = team.money * 0.7; // Reduce money by 30%
+      await team.save(); // Save the updated team
+    });
+
+    res.status(200).json({ message: "Money reduced by 30% for all teams" });
+  } catch (err) {
+    console.error("Error reducing money:", err);
+    res.status(500).json({ message: "Failed to reduce money for teams" });
+  }
+});
+
+router.post("cutResource", async (req, res) => {
+  console.log("hello");
+  try {
+    // Fetch all teams
+    const teams = await Team.find();
+
+    // Update each team's money by reducing it by 30%
+    teams.forEach(async (team) => {
+      console.log(team.resources.eecoin);
+      team.resources.eecoin = math.round(team.resources.eecoin * 0.5); 
+      team.resources.love = math.round(team.resources.love * 0.5); 
+      await team.save(); // Save the updated team
+    });
+
+    res.status(200).json({ message: "Resources reduced by 50% for all teams" });
+  } catch (err) {
+    console.error("Error reducing resources:", err);
+    res.status(500).json({ message: "Failed to reduce resource for teams" });
+  }
+});
+
 
 router.post("/sell", async (req, res) => {
   const { teamId, landId, forced } = req.body;

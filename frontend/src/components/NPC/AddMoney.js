@@ -320,7 +320,7 @@ const AddMoney = () => {
               Upgrade
             </Button>
           </Box>
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -351,62 +351,7 @@ const AddMoney = () => {
             >
               +100%
             </Button>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <Button
-              variant="contained"
-              disabled={team === -1}
-              sx={{ marginBottom: 1, width: 80 }}
-              onClick={() => handleCard(0)}
-            >
-              縣城
-            </Button>
-            <Button
-              variant="contained"
-              disabled={team === -1 || building === -1}
-              sx={{ marginBottom: 1, width: 80 }}
-              onClick={() => handleCard(1)}
-            >
-              金蔓
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ marginBottom: 1, width: 80 }}
-              onClick={() => handleCard(2)}
-            >
-              紙膠
-            </Button>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <Button
-              variant="contained"
-              disabled={team === -1}
-              sx={{ marginBottom: 1, width: 120 }}
-              onClick={() => handleCard(3)}
-            >
-              打劫
-            </Button>
-            <Button
-              variant="contained"
-              disabled={team === -1}
-              sx={{ marginBottom: 1, width: 120 }}
-              onClick={() => handleCard(4)}
-            >
-              平等
-            </Button>
-          </Box>
+          </Box> */}
           <Grid container spacing={1}>
             <Grid item xs={6}>
               <Box display="flex" flexDirection="row" justifyContent="center">

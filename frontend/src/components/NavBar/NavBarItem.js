@@ -41,13 +41,20 @@ export const NavBarItems = [
     shortLabel: "Map",
     route: "map",
   },
+  // {
+  //   id: 11,
+  //   icon: <AccountBalanceIcon />,
+  //   label: "Bank",
+  //   shortLabel: "Bank",
+  //   route: "bank",
+  // },
   {
-    id: 11,
-    icon: <AccountBalanceIcon />,
-    label: "Bank",
-    shortLabel: "Bank",
-    route: "bank",
-  },
+    id: 15,
+    icon: <AutoGraphIcon />, //resource
+    label: "Resources",
+    shortLabel: "Resources",
+    route: "resources",
+  }
 ];
 
 export const NPCItems = [
@@ -72,20 +79,13 @@ export const NPCItems = [
     shortLabel: "Transfer",
     route: "transfer",
   },
-  {
-    id: 11,
-    icon: <AccountBalanceIcon />,
-    label: "Bank",
-    shortLabel: "Bank",
-    route: "bank",
-  },
-  {
-    id: 15,
-    icon: <AutoGraphIcon />, //resource
-    label: "Resources",
-    shortLabel: "Resources",
-    route: "resources",
-  }
+  // {
+  //   id: 11,
+  //   icon: <AccountBalanceIcon />,
+  //   label: "Bank",
+  //   shortLabel: "Bank",
+  //   route: "bank",
+  // }
   // {
   //   id: 14,
   //   icon: <QuizIcon />,
@@ -103,13 +103,13 @@ export const adminItems = [
     shortLabel: "Event",
     route: "event",
   },
-  {
-    id: 11,
-    icon: <AccountBalanceIcon />,
-    label: "Bank",
-    shortLabel: "Bank",
-    route: "bank",
-  },
+  // {
+  //   id: 11,
+  //   icon: <AccountBalanceIcon />,
+  //   label: "Bank",
+  //   shortLabel: "Bank",
+  //   route: "bank",
+  // },
   {
     id: 12,
     icon: <BuildIcon />,

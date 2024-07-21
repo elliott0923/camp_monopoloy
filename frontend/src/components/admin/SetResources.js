@@ -116,7 +116,7 @@ const SetResources = () => {
           sx={{
             margin: "auto",
             display: "flex",
-            flexDirection: "row",
+            flexDirection: "column",
             justifyContent: "center", // Center the Boxes
             gap: "24px", // Add space between the Boxes
           }}
@@ -183,30 +183,22 @@ const SetResources = () => {
               </Select>
             </FormControl>
             <FormControl
-              variant="standard"
-              sx={{ minWidth: 250, marginTop: 2 }}
-            >
-              <InputLabel id="number-resource">Number of resource</InputLabel>
-              <Select
-                value={number}
-                labelId="number-resource"
-                onChange={(e) => {
-                  setNumber(e.target.value);
-                }}
+                variant="standard"
+                sx={{ minWidth: 250, marginTop: 2 }}
               >
-                <MenuItem value={0}>0</MenuItem>
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
-                <MenuItem value={6}>6</MenuItem>
-                <MenuItem value={7}>7</MenuItem>
-                <MenuItem value={8}>8</MenuItem>
-                <MenuItem value={9}>9</MenuItem>
-                <MenuItem value={10}>10</MenuItem>
-              </Select>
-            </FormControl>
+                <TextField
+                  required
+                  label="enter the amount"
+                  id="number"
+                  // autoComplete="enter the number"
+                  type="text"
+                  // sx={{ marginTop: 1, marginBottom: 1 }}
+                  autoFocus
+                  onChange={(e) => {
+                    setNumber(e.target.value);
+                  }}
+                />
+              </FormControl>
             <FormControl
               variant="standard"
               sx={{ minWidth: 250, marginTop: 2 }}

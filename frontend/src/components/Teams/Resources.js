@@ -8,6 +8,7 @@ import {
   TableCell,
   TableContainer,
   TableRow,
+  TextField,
   Container,
   InputLabel,
   Select,
@@ -133,10 +134,7 @@ const Resources = () => {
     return () => clearInterval(update);
   }, []);
 
-  if (teams.length === 0) {
-    return <Loading />;
-  } else {
-    return (
+  return (
       <>
           <Container component="main" maxWidth="xs">
             <Box
@@ -223,27 +221,21 @@ const Resources = () => {
                 variant="standard"
                 sx={{ minWidth: 250, marginTop: 2 }}
               >
-                <InputLabel id="number-resource">Number of resource</InputLabel>
-                <Select
-                  value={number}
-                  labelId="number-resource"
+                <TextField
+                  required
+                  label="enter the amount"
+                  id="number"
+                  // autoComplete="enter the number"
+                  type="text"
+                  // sx={{ marginTop: 1, marginBottom: 1 }}
+                  autoFocus
                   onChange={(e) => {
                     setNumber(e.target.value);
                   }}
-                >
-                  <MenuItem value={0}>0</MenuItem>
-                  <MenuItem value={1}>1</MenuItem>
-                  <MenuItem value={2}>2</MenuItem>
-                  <MenuItem value={3}>3</MenuItem>
-                  <MenuItem value={4}>4</MenuItem>
-                  <MenuItem value={5}>5</MenuItem>
-                  <MenuItem value={6}>6</MenuItem>
-                  <MenuItem value={7}>7</MenuItem>
-                  <MenuItem value={8}>8</MenuItem>
-                  <MenuItem value={9}>9</MenuItem>
-                  <MenuItem value={10}>10</MenuItem>
-                </Select>
+                />
               </FormControl>
+
+
               <FormControl
                 variant="standard"
                 sx={{ minWidth: 250, marginTop: 2 }}
@@ -326,7 +318,6 @@ const Resources = () => {
         
       </>
     );
-  }
-};
+  };
 
 export default Resources;

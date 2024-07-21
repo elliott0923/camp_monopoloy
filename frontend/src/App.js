@@ -16,7 +16,7 @@ import Transfer from "./components/NPC/Transfer";
 import SetShopLevel from "./components/NPC/SetShopLevel";
 import Support from "./components/NPC/Support";
 import Event from "./components/admin/Event";
-import Resources from "./components/admin/Resources";
+import Resources from "./components/Teams/Resources";
 import Additional from "./components/admin/Additional";
 import SetOccupation from "./components/admin/SetOccupation";
 import Bank from "./components/admin/Bank";

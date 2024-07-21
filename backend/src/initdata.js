@@ -535,13 +535,13 @@ const events = [
   },
   {
     id: 5,
-    title: "屠魔令",
-    description: "各組消耗大量資源躲避追緝，各組物資減少20%(四捨五入)",
+    title: "八國革命",
+    description: "各國響應革命，NPC同時呼口號，因為戰爭，EE幣暴跌",
   },
   {
     id: 6,
-    title: "八國革命",
-    description: "各國響應革命，NPC同時呼口號，因為戰爭，EE幣暴跌",
+    title: "屠魔令",
+    description: "各組消耗大量資源躲避追緝，各組物資減少50%(四捨五入)",
   },
   {
     id: 7,

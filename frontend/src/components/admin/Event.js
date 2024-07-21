@@ -38,6 +38,17 @@ const Event = () => {
     navigate("/notifications");
   };
 
+  const handleMoneyPercent = async () => {
+    await axios.post("/percent", {});
+    navigate("/teams");
+  }
+
+  const handleResourcePercent = async () => {
+    console.log("in");
+    await axios.post("/cutResource", {});
+    navigate("/teams");
+  }
+
   useEffect(() => {
     if (role !== "admin") {
       navigate("/permission");
@@ -104,6 +115,30 @@ const Event = () => {
           </FormControl>
           {APIResponse && <Alert severity="info">{APIResponse}</Alert>}
         </Box>
+
+        <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <Button
+              variant="contained"
+              sx={{ marginBottom: 1, width: 80 }}
+              onClick={handleMoneyPercent}
+            >
+              money -30%
+            </Button>
+
+            <Button
+              variant="contained"
+              sx={{ marginBottom: 1, width: 80 }}
+              onClick={handleResourcePercent}
+            >
+              Resource -50%
+            </Button>
+          </Box>
         {/* <Box
           sx={{
             marginTop: 5,
