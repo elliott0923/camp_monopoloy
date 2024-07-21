@@ -105,9 +105,6 @@ const SetResources = () => {
     return () => clearInterval(update);
   }, []);
 
-  if (teams.length === 0) {
-    return <Loading />;
-  } else {
     return (
       <>
         <Container
@@ -348,7 +345,6 @@ const SetResources = () => {
         </Paper>
       </>
     );
-  }
 };
 
 export default SetResources;

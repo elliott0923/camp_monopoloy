@@ -51,40 +51,50 @@ const Transfer = () => {
     // console.log(data);
     setFromData(data);
     setFrom(from);
+  };
 
-    console.log(fromData.resources.love);
+  const handleDiscount = async (from) => {
+    // const { data } = await axios.get("/team/" + from);
+    // // console.log(data);
+    // setFromData(data);
+    // setFrom(from);
 
-    if(fromData.resources.love === 1) {
+    // console.log(fromData.resources.love);
+
+    if(fromData.resources.love === 0) {
+      setErrorMessage("No love, No discount");
+    }
+    else if(fromData.resources.love === 1) {
       setAmount(amount * 0.95);
-      setErrorMessage("Auto Fill Love");
+      setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 2) {
       setAmount(amount * 0.9);
-      setErrorMessage("Auto Fill Love");
+      setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 3) {
       setAmount(amount * 0.85);
-      setErrorMessage("Auto Fill Love");
+      setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 4) {
       setAmount(amount * 0.82);
-      setErrorMessage("Auto Fill Love");
+      setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 5) {
       setAmount(amount * 0.79);
-      setErrorMessage("Auto Fill Love");
+      setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 6) {
       setAmount(amount * 0.76);
-      setErrorMessage("Auto Fill Love");
+      setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 7) {
       setAmount(amount * 0.73);
-      setErrorMessage("Auto Fill Love");
+      setErrorMessage("Discounted");
     }
     else if(fromData.resources.love >= 8) {
       setAmount(amount * 0.7);
-      setErrorMessage("Auto Fill Love");
+      setErrorMessage("Discounted");
     }
 
     console.log(amount);
@@ -141,10 +151,6 @@ const Transfer = () => {
     setNavBarId(2);
   };
 
-  const handleDiscount = () => {
-    console.log("discount");
-  };
-
   const handleBuilding = async (building) => {
     if (building > 0) {
       const { data } = await axios.get("/land/" + building);
@@ -152,17 +158,18 @@ const Transfer = () => {
       setBuildingData(data);
       if (data.owner !== 0) {
         handleTo(data.owner, data);
-      } else if (data.hawkEye !== 0 && data.id !== data.hawkEye) {
-        const { data: hawkEyeTeam } = await axios.get("/team/hawkeye");
-        handleTo(hawkEyeTeam.id, data);
-        const { data: hawkEyeBuilding } = await axios.get(
-          "/land/" + data.hawkEye
-        );
-        setAmount(
-          Math.round(0.4 * hawkEyeBuilding.rent[hawkEyeBuilding.level - 1])
-        );
-        setErrorMessage("Auto Fill Hawk Eye");
-      }
+      } 
+      // else if (data.hawkEye !== 0 && data.id !== data.hawkEye) {
+      //   const { data: hawkEyeTeam } = await axios.get("/team/hawkeye");
+      //   handleTo(hawkEyeTeam.id, data);
+      //   const { data: hawkEyeBuilding } = await axios.get(
+      //     "/land/" + data.hawkEye
+      //   );
+      //   setAmount(
+      //     Math.round(0.4 * hawkEyeBuilding.rent[hawkEyeBuilding.level - 1])
+      //   );
+      //   setErrorMessage("Auto Fill Hawk Eye");
+      // }
 
       const res = await axios.post("/series", {
         teamId: data.owner,
@@ -264,9 +271,9 @@ const Transfer = () => {
           </TableContainer>
         ) : null}
 
-        <Typography variant="body1" component="p">
+        {/* <Typography variant="body1" component="p">
           Series Count: {count}
-        </Typography>
+        </Typography> */}
       </Box>
     );
   };
@@ -471,10 +478,20 @@ const Transfer = () => {
           </Button> */}
           <Button
             variant="contained"
+            disabled={amount === 0 || from === to}
+            onClick={handleDiscount}
+            fullWidth
+            sx={{ marginTop: 0 }}
+          >
+            love discount
+          </Button>
+
+          <Button
+            variant="contained"
             disabled={!(from && to && amount) || from === to}
             onClick={handleClick}
             fullWidth
-            sx={{ marginTop: 0 }}
+            sx={{ marginTop: 1 }}
           >
             <SendIcon />
           </Button>
