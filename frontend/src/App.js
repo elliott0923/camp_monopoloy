@@ -33,6 +33,7 @@ import SetDice from "./components/NPC/SetDice";
 import Map from "./components/Properties/Map";
 import Random from "./components/NPC/Random";
 import SetResources from "./components/admin/SetResources";
+import Help from "./components/Help";
 // import SetPrices from "./components/admin/Resources";
 // import Resource from "../../backend/models/resource";
 // // import { socket, SocketContext } from "./websocket";
@@ -86,6 +87,7 @@ const App = () => {
           >
             <Routes location={location}>
               <Route path="/" element={<Home />} />
+              <Route path="/help" element={<Help />} />
               <Route path="notifications" element={<Notifications />} />
               <Route path="teams" element={<Teams />} />
               <Route path="properties" element={<Properties />} />

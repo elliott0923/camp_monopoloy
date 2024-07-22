@@ -181,23 +181,6 @@ const Resources = () => {
                     </MenuItem>
                   ))}
                 </Select>
-
-            {/* <Select
-              value={resourceId}
-              labelId="resource"
-              onChange={(e) => {
-                setResourceId(e.target.value);
-              }}
-            >
-              <MenuItem value={-1}>Select Resource</MenuItem>
-              {resources.map((resource, index) => (
-                <MenuItem value={index} key={index}>
-                  {Object.keys(resource).map((key) => (
-                    <span key={key}>{key}, </span>
-                  ))}
-                </MenuItem>
-              ))}
-            </Select> */}
               </FormControl>
 
 
@@ -225,9 +208,7 @@ const Resources = () => {
                   required
                   label="enter the amount"
                   id="number"
-                  // autoComplete="enter the number"
                   type="text"
-                  // sx={{ marginTop: 1, marginBottom: 1 }}
                   autoFocus
                   onChange={(e) => {
                     setNumber(e.target.value);
@@ -240,13 +221,6 @@ const Resources = () => {
                 variant="standard"
                 sx={{ minWidth: 250, marginTop: 2 }}
               >
-                {/* <Button
-                disabled={team === -1 || building === -1}
-                onClick={handleClick}
-                sx={{ marginTop: 2 }}
-              >
-                Submit
-              </Button> */}
                 <Button
                   variant="contained"
                   disabled={team === -1 || number === -1}
@@ -303,9 +277,9 @@ const Resources = () => {
                             style={{ userSelect: "none" }}
                           >
                             {column.id === "name"
-                              ? resource.name  // Assuming resourceName is aligned with resourcesQuan by index
+                              ? resource.name
                               : column.id === "price"
-                              ? resource.price  // Assuming resourcePrice is aligned with resourcesQuan by index // Use the value from resourceQuan directly
+                              ? resource.price
                               : null}
                           </TableCell>
                         ))}
@@ -314,6 +288,19 @@ const Resources = () => {
                   </TableBody>
                 </Table>
             </TableContainer>
+
+
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <img
+                src="/love.jpg"
+                alt="Map"
+                style={{
+                  maxWidth: "100%",
+                  userSelect: "none",
+                  marginTop: "20px",
+                }}
+              />
+            </Box>
           </Paper>
         
       </>

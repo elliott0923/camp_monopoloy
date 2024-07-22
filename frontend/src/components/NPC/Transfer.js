@@ -69,33 +69,61 @@ const Transfer = () => {
       setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 2) {
-      setAmount(amount * 0.9);
+      setAmount(amount * 0.925);
       setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 3) {
-      setAmount(amount * 0.85);
+      setAmount(amount * 0.9);
       setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 4) {
-      setAmount(amount * 0.82);
+      setAmount(amount * 0.875);
       setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 5) {
-      setAmount(amount * 0.79);
+      setAmount(amount * 0.85);
       setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 6) {
-      setAmount(amount * 0.76);
+      setAmount(amount * 0.835);
       setErrorMessage("Discounted");
     }
     else if(fromData.resources.love === 7) {
-      setAmount(amount * 0.73);
+      setAmount(amount * 0.82);
       setErrorMessage("Discounted");
     }
     else if(fromData.resources.love >= 8) {
+      setAmount(amount * 0.805);
+      setErrorMessage("Discounted");
+    }
+    else if(fromData.resources.love >= 9) {
+      setAmount(amount * 0.79);
+      setErrorMessage("Discounted");
+    }
+    else if(fromData.resources.love >= 10) {
+      setAmount(amount * 0.775);
+      setErrorMessage("Discounted");
+    }
+    else if(fromData.resources.love >= 11) {
+      setAmount(amount * 0.76);
+      setErrorMessage("Discounted");
+    }
+    else if(fromData.resources.love >= 12) {
+      setAmount(amount * 0.745);
+      setErrorMessage("Discounted");
+    }
+    else if(fromData.resources.love >= 13) {
+      setAmount(amount * 0.73);
+      setErrorMessage("Discounted");
+    }
+    else if(fromData.resources.love >= 14) {
+      setAmount(amount * 0.715);
+      setErrorMessage("Discounted");
+    }else if(fromData.resources.love >= 15) {
       setAmount(amount * 0.7);
       setErrorMessage("Discounted");
     }
+
 
     console.log(amount);
   };
