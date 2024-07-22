@@ -468,7 +468,7 @@ router.post("/percent", async (req, res) => {
   }
 });
 
-router.post("cutResource", async (req, res) => {
+router.post("/cutResource", async (req, res) => {
   console.log("hello");
   try {
     // Fetch all teams
@@ -526,120 +526,131 @@ router
         await teams[i].save();
       }
       switch (id) {
-        default: // 1, 4, 6, 7, 9, 11, 14, 16
+        default: 
           res.json("Success").status(200);
           break;
-        case 2: // 洋人來啦，先跑為妙，所有人現金-5000, 並且往前6格。
+        case 1: // 山賊入侵，各組金錢減少30%。
           {
             const teams = await Team.find();
             for (let i = 0; i < teams.length; i++) {
-              teams[i].money -= 5000;
+              teams[i].money  = teams[i].money * 0.7;
               await teams[i].save();
             }
             res.json("Success").status(200);
           }
           break;
-        case 3: // 來幫臺灣衝經濟嘍, 每個小隊普發$10000。
+        case 6: // 屠魔令，所有資源減少50%
           {
             const teams = await Team.find();
             for (let i = 0; i < teams.length; i++) {
-              teams[i].money += 10000;
+              teams[i].resources.eecoin = Math.round(teams[i].resources.eecoin * 0.5);
+              teams[i].resources.love = Math.round(teams[i].resources.love * 0.5);
               await teams[i].save();
             }
             res.json("Success").status(200);
           }
           break;
-        case 5:
-          {
-            // 我們還能不能能不能再見面？戀愛腦的你向佛祖發誓，為了愛情你可以放棄一切, 於是向佛祖捐獻30%現金+任意一張卡片，以示誠心。
-            const teams = await Team.find();
-            for (let i = 0; i < teams.length; i++) {
-              teams[i].money = Math.round(teams[i].money * 0.07) * 10;
-              await teams[i].save();
-            }
-            res.json("Success").status(200);
-          }
-          break;
-        case 8: //卡努颱風襲擊, 舟山河泛濫成災, 編號12至34的房子數量-1。房產等級1的地產不受影響
-          {
-            const lands = await (
-              await Land.find()
-            ).filter(
-              (land) =>
-                land.type === "Building" &&
-                land.level > 1 &&
-                land.id >= 12 &&
-                land.id <= 34
-            );
-            for (let i = 0; i < lands.length; i++) {
-              lands[i].level -= 1;
-              await lands[i].save();
-            }
-            res.json("Success").status(200);
-          }
-          break;
-        case 10: // 獲得歷史線索, 獲得現金15000 + 一項隱藏成就的敘述
-          {
-            const teams = await Team.find();
-            for (let i = 0; i < teams.length; i++) {
-              teams[i].money += 15000;
-              await teams[i].save();
-            }
-            res.json("Success").status(200);
-          }
-          break;
+        // case 3: // 來幫臺灣衝經濟嘍, 每個小隊普發$10000。
+        //   {
+        //     const teams = await Team.find();
+        //     for (let i = 0; i < teams.length; i++) {
+        //       teams[i].money += 10000;
+        //       await teams[i].save();
+        //     }
+        //     res.json("Success").status(200);
+        //   }
+        //   break;
+        // case 5:
+        //   {
+        //     // 我們還能不能能不能再見面？戀愛腦的你向佛祖發誓，為了愛情你可以放棄一切, 於是向佛祖捐獻30%現金+任意一張卡片，以示誠心。
+        //     const teams = await Team.find();
+        //     for (let i = 0; i < teams.length; i++) {
+        //       teams[i].money = Math.round(teams[i].money * 0.07) * 10;
+        //       await teams[i].save();
+        //     }
+        //     res.json("Success").status(200);
+        //   }
+        //   break;
+        // case 8: //卡努颱風襲擊, 舟山河泛濫成災, 編號12至34的房子數量-1。房產等級1的地產不受影響
+        //   {
+        //     const lands = await (
+        //       await Land.find()
+        //     ).filter(
+        //       (land) =>
+        //         land.type === "Building" &&
+        //         land.level > 1 &&
+        //         land.id >= 12 &&
+        //         land.id <= 34
+        //     );
+        //     for (let i = 0; i < lands.length; i++) {
+        //       lands[i].level -= 1;
+        //       await lands[i].save();
+        //     }
+        //     res.json("Success").status(200);
+        //   }
+        //   break;
+        // case 10: // 獲得歷史線索, 獲得現金15000 + 一項隱藏成就的敘述
+        //   {
+        //     const teams = await Team.find();
+        //     for (let i = 0; i < teams.length; i++) {
+        //       teams[i].money += 15000;
+        //       await teams[i].save();
+        //     }
+        //     res.json("Success").status(200);
+        //   }
+        //   break;
 
-        case 12: // 仇富心態爆發, 現金前2的小隊入獄 + 扣除其40%的現金, 並將其數額平分給剩下8個小隊
-          {
-            const teams = await Team.find().sort({ money: -1 });
-            const money1 = Math.round(teams[0].money * 0.04) * 10;
-            const money2 = Math.round(teams[1].money * 0.04) * 10;
-            let moneyAdd = Math.round((money1 + money2) / 80) * 10;
-            for (let i = 0; i < teams.length; i++) {
-              if (i === 0) {
-                teams[i].money -= money1;
-              } else if (i === 1) {
-                teams[i].money -= money2;
-              } else {
-                teams[i].money += moneyAdd;
-              }
-              await teams[i].save();
-            }
+        // case 12: // 仇富心態爆發, 現金前2的小隊入獄 + 扣除其40%的現金, 並將其數額平分給剩下8個小隊
+        //   {
+        //     const teams = await Team.find().sort({ money: -1 });
+        //     const money1 = Math.round(teams[0].money * 0.04) * 10;
+        //     const money2 = Math.round(teams[1].money * 0.04) * 10;
+        //     let moneyAdd = Math.round((money1 + money2) / 80) * 10;
+        //     for (let i = 0; i < teams.length; i++) {
+        //       if (i === 0) {
+        //         teams[i].money -= money1;
+        //       } else if (i === 1) {
+        //         teams[i].money -= money2;
+        //       } else {
+        //         teams[i].money += moneyAdd;
+        //       }
+        //       await teams[i].save();
+        //     }
 
-            note = `${teams[0].teamname}、${teams[1].teamname}入獄！`;
-            res.json(note).status(200);
-          }
-          break;
-        case 13:
-          {
-            // 各隊扣除「擁有的房子數量*2000」 的現金
-            const teams = await Team.find().sort({ id: 1 });
-            for (let i = 0; i < teams.length; i++) {
-              const lands = await Land.find({ owner: teams[i].id });
-              let total = 0;
-              for (let j = 0; j < lands.length; j++) {
-                total += lands[j].level;
-              }
-              console.log(`total: ${total}`);
-              teams[i].money -= total * 2000;
-              await teams[i].save();
-            }
-            res.json("Success").status(200);
-          }
-          break;
+        //     note = `${teams[0].teamname}、${teams[1].teamname}入獄！`;
+        //     res.json(note).status(200);
+        //   }
+        //   break;
+        // case 13:
+        //   {
+        //     // 各隊扣除「擁有的房子數量*2000」 的現金
+        //     const teams = await Team.find().sort({ id: 1 });
+        //     for (let i = 0; i < teams.length; i++) {
+        //       const lands = await Land.find({ owner: teams[i].id });
+        //       let total = 0;
+        //       for (let j = 0; j < lands.length; j++) {
+        //         total += lands[j].level;
+        //       }
+        //       console.log(`total: ${total}`);
+        //       teams[i].money -= total * 2000;
+        //       await teams[i].save();
+        //     }
+        //     res.json("Success").status(200);
+        //   }
+        //   break;
 
-        case 15: // 將所有現金不足20000的小隊補至20000
-          {
-            const teams = await Team.find();
-            for (let i = 0; i < teams.length; i++) {
-              if (teams[i].money < 20000) {
-                teams[i].money = 20000;
-              }
-              teams[i].save();
-            }
-            res.json("Success").status(200);
-          }
-          break;
+        // case 15: // 將所有現金不足20000的小隊補至20000
+        //   {
+        //     const teams = await Team.find();
+        //     for (let i = 0; i < teams.length; i++) {
+        //       if (teams[i].money < 20000) {
+        //         teams[i].money = 20000;
+        //       }
+        //       teams[i].save();
+        //     }
+        //     res.json("Success").status(200);
+        //   }
+        //   break;
       }
       pair.value = id;
       await pair.save();

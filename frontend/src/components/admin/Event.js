@@ -116,7 +116,7 @@ const Event = () => {
           {APIResponse && <Alert severity="info">{APIResponse}</Alert>}
         </Box>
 
-        <Box
+        {/* <Box
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -138,7 +138,7 @@ const Event = () => {
             >
               Resource -50%
             </Button>
-          </Box>
+          </Box> */}
         {/* <Box
           sx={{
             marginTop: 5,
