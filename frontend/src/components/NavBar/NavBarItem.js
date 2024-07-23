@@ -41,6 +41,13 @@ export const NavBarItems = [
     shortLabel: "Map",
     route: "map",
   },
+  {
+    id: 11,
+    icon: <AutoGraphIcon />, //resource
+    label: "ResourcesView",
+    shortLabel: "ResourcesView",
+    route: "resourcesView",
+  }
   // {
   //   id: 11,
   //   icon: <AccountBalanceIcon />,
@@ -48,13 +55,6 @@ export const NavBarItems = [
   //   shortLabel: "Bank",
   //   route: "bank",
   // },
-  {
-    id: 15,
-    icon: <AutoGraphIcon />, //resource
-    label: "Resources",
-    shortLabel: "Resources",
-    route: "resources",
-  }
 ];
 
 export const NPCItems = [
@@ -93,6 +93,13 @@ export const NPCItems = [
   //   shortLabel: "Random",
   //   route: "random",
   // },
+  {
+    id: 15,
+    icon: <AutoGraphIcon />, //resource
+    label: "Resources",
+    shortLabel: "Resources",
+    route: "resources",
+  }
 ];
 
 export const adminItems = [

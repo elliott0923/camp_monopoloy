@@ -88,8 +88,6 @@ const Resources = () => {
     getCheck(team, resourceId);
 
     if(mode === 1){//buy
-      console.log(resources[resourceId].price * number);
-      console.log(teamToCheckBalance);
       if(teamToCheckBalance < resources[resourceId].price * number){
         alert("Not enough money to buy");
         return;
@@ -123,9 +121,11 @@ const Resources = () => {
   useEffect(() => {
     // getResourcesQuan();
     getResources();
+    getCheck(team, resourceId);
     const update = setInterval(() => {
       // getResourcesQuan();
       getResources();
+      getCheck(team, resourceId);
       flag = !flag;
       if (flag) updatePrices();
       console.log("update");

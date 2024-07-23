@@ -16,7 +16,7 @@ import Transfer from "./components/NPC/Transfer";
 import SetShopLevel from "./components/NPC/SetShopLevel";
 import Support from "./components/NPC/Support";
 import Event from "./components/admin/Event";
-import Resources from "./components/Teams/Resources";
+import Resources from "./components/NPC/Resources";
 import Additional from "./components/admin/Additional";
 import SetOccupation from "./components/admin/SetOccupation";
 import Bank from "./components/admin/Bank";
@@ -34,6 +34,7 @@ import Map from "./components/Properties/Map";
 import Random from "./components/NPC/Random";
 import SetResources from "./components/admin/SetResources";
 import Help from "./components/Help";
+import ResourcesView from "./components/Teams/ResourcesView";
 // import SetPrices from "./components/admin/Resources";
 // import Resource from "../../backend/models/resource";
 // // import { socket, SocketContext } from "./websocket";
@@ -90,6 +91,7 @@ const App = () => {
               <Route path="/help" element={<Help />} />
               <Route path="notifications" element={<Notifications />} />
               <Route path="teams" element={<Teams />} />
+              <Route path="resourcesview" element={<ResourcesView />} />
               <Route path="properties" element={<Properties />} />
               <Route path="sellproperty" element={<SellProperty />} />
               <Route path="login" element={<Login />} />
