@@ -49,6 +49,13 @@ return (
                     <Button
                         variant="contained"
                         sx={{ marginBottom: 1, width: 120 }}
+                        onClick={() => window.open("https://docs.google.com/document/d/1hJ7guJ6CndYnsPq2GxAT8Z7rgyGOIWGgSjC96mGk2mU/edit", "_blank")}
+                    >
+                        NPC<br/>共同SOP
+                    </Button>
+                    <Button
+                        variant="contained"
+                        sx={{ marginBottom: 1, width: 120 }}
                         onClick={() => window.open("https://docs.google.com/document/d/15w5tjrIHBJKwxPWuWpEKgcbYXX4ipqzR8VbaAuqoLOc/edit?usp=drive_link", "_blank")}
                     >
                         NPC SOP
@@ -59,6 +66,13 @@ return (
                         onClick={() => window.open("https://docs.google.com/spreadsheets/d/1J9-TY4O-zkLXBxuQDyMl87b6VFY9hGrt/edit?usp=drive_link&ouid=113752778377958120846&rtpof=true&sd=true", "_blank")}
                     >
                         技能卡
+                    </Button>
+                    <Button
+                        variant="contained"
+                        sx={{ marginBottom: 1, width: 120 }}
+                        onClick={() => window.open("https://docs.google.com/spreadsheets/d/1uOwBtqZWkz8dfhK-TYxJgbKdcwu1G4Hb5SYgd-DmB_M/edit?gid=0#gid=0", "_blank")}
+                    >
+                        陽春銀行
                     </Button>
                 </Box>
         </Box>
