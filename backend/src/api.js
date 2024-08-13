@@ -432,7 +432,7 @@ router.post("/sellResource", async (req, res) => {
       await Team.findOneAndUpdate(//love
         { id: teamId },
         {
-          resources: { love: team.resources.love + number, eecoin: team.resources.eecoin },
+          resources: { love: Number(team.resources.love) + Number(number), eecoin: team.resources.eecoin },
           money: team.money - resource.price * number,
         }
       );
@@ -440,7 +440,7 @@ router.post("/sellResource", async (req, res) => {
       await Team.findOneAndUpdate(
         { id: teamId },
         {
-          resources: { love: team.resources.love, eecoin: team.resources.eecoin + number },
+          resources: { love: team.resources.love, eecoin: Number(team.resources.eecoin) + Number(number) },
           money: team.money - resource.price * number,
         }
       );
