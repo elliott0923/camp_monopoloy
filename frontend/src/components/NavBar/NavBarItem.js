@@ -12,6 +12,7 @@ import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import SavingsIcon from '@mui/icons-material/Savings';
+import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 
 export const NavBarItems = [
   {
@@ -43,7 +44,7 @@ export const NavBarItems = [
     route: "map",
   },
   {
-    id: 11,
+    id: 5,
     icon: <AutoGraphIcon />, //resource
     label: "ResourcesView",
     shortLabel: "ResourcesView",
@@ -60,28 +61,28 @@ export const NavBarItems = [
 
 export const NPCItems = [
   {
-    id: 5,
+    id: 6,
     icon: <PaidIcon />,
     label: "Add Money",
     shortLabel: "Money",
     route: "addmoney",
   },
   {
-    id: 6,
+    id: 7,
     icon: <RequestQuoteIcon />,
     label: "Set Ownership",
     shortLabel: "Ownership",
     route: "setownership",
   },
   {
-    id: 7,
+    id: 8,
     icon: <CurrencyExchangeIcon />,
     label: "Transfer",
     shortLabel: "Transfer",
     route: "transfer",
   },
   {
-    id: 11,
+    id: 9,
     icon: <SavingsIcon />, 
     label: "BankTransfer",
     shortLabel: "BankTransfer",
@@ -95,7 +96,7 @@ export const NPCItems = [
   //   route: "random",
   // },
   {
-    id: 15,
+    id: 10,
     icon: <AutoGraphIcon />, //resource
     label: "Resources",
     shortLabel: "Resources",
@@ -105,35 +106,35 @@ export const NPCItems = [
 
 export const adminItems = [
   {
-    id: 10,
+    id: 11,
     icon: <EventIcon />,
     label: "Event / Phase",
     shortLabel: "Event",
     route: "event",
   },
-  // {
-  //   id: 11,
-  //   icon: <AccountBalanceIcon />,
-  //   label: "Bank",
-  //   shortLabel: "Bank",
-  //   route: "bank",
-  // },
   {
     id: 12,
+    icon: <LocalAtmIcon />,
+    label: "Interest",
+    shortLabel: "Interest",
+    route: "interest",
+  },
+  {
+    id: 13,
     icon: <BuildIcon />,
     label: "Team Info",
     shortLabel: "Team",
     route: "teams",
   },
   {
-    id: 13,
+    id: 14,
     icon: <PaidIcon />,
     label: "Bankrupt",
     shortLabel: "Bankrupt",
     route: "bankrupt",
   },
   {
-    id: 14,
+    id: 15,
     icon: <VolumeUpIcon />,
     label: "Broadcast",
     shortLabel: "Broadcast",

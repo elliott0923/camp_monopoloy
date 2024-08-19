@@ -490,6 +490,20 @@ router.post("/bankTransfer", async (req, res) => {
   res.json("Success").status(200);
 });
 
+router.post("/interest", async(req, res) => {
+  const {rate} = req.body;
+  const teams = await Team.find();
+
+  for (let i = 0; i < teams.length; i++) {
+    teams[i].bank = Math.round(teams[i].bank * Number(rate));
+    await teams[i].save();
+
+    console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
+  }
+
+  res.json("Success").status(200);
+});
+
 router.get("/allEvents", async (req, res) => {
   const events = await Event.find().sort({ id: 1 });
   res.json(events).status(200);
