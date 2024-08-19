@@ -11,6 +11,7 @@ import MapIcon from "@mui/icons-material/Map";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import CalculateIcon from '@mui/icons-material/Calculate';
+import SavingsIcon from '@mui/icons-material/Savings';
 
 export const NavBarItems = [
   {
@@ -79,13 +80,13 @@ export const NPCItems = [
     shortLabel: "Transfer",
     route: "transfer",
   },
-  // {
-  //   id: 11,
-  //   icon: <AccountBalanceIcon />,
-  //   label: "Bank",
-  //   shortLabel: "Bank",
-  //   route: "bank",
-  // }
+  {
+    id: 11,
+    icon: <SavingsIcon />, 
+    label: "BankTransfer",
+    shortLabel: "BankTransfer",
+    route: "banktransfer",
+  },
   // {
   //   id: 14,
   //   icon: <QuizIcon />,

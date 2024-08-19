@@ -35,6 +35,7 @@ import Random from "./components/NPC/Random";
 import SetResources from "./components/admin/SetResources";
 import Help from "./components/Help";
 import ResourcesView from "./components/Teams/ResourcesView";
+import BankTransfer from "./components/NPC/BankTransfer";
 // import SetPrices from "./components/admin/Resources";
 // import Resource from "../../backend/models/resource";
 // // import { socket, SocketContext } from "./websocket";
@@ -98,6 +99,7 @@ const App = () => {
               <Route path="addmoney" element={<AddMoney />} />
               <Route path="setownership" element={<SetOwnership />} />
               <Route path="transfer" element={<Transfer />} />
+              <Route path="banktransfer" element={<BankTransfer />} />
               <Route path="setshop" element={<SetShopLevel />} />
               <Route path="random" element={<Random />} />
               <Route path="event" element={<Event />} />

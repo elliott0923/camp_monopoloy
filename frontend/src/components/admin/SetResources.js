@@ -84,7 +84,7 @@ const SetResources = () => {
     }
 
     await axios.post("updateResourcePrice", payload);
-    navigate("/resources");
+    navigate("/teams");
   };
 
   const handlePrice = async (price) => {

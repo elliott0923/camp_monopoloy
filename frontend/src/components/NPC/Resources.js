@@ -290,7 +290,7 @@ const Resources = () => {
             </TableContainer>
 
 
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
+            {/* <Box sx={{ display: "flex", justifyContent: "center" }}>
               <img
                 src="/love.jpg"
                 alt="Map"
@@ -300,7 +300,7 @@ const Resources = () => {
                   marginTop: "20px",
                 }}
               />
-            </Box>
+            </Box> */}
           </Paper>
         
       </>

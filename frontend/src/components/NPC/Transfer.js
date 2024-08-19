@@ -504,7 +504,7 @@ const Transfer = () => {
           >
             Submit
           </Button> */}
-          <Button
+          {/* <Button
             variant="contained"
             disabled={amount === 0 || from === to}
             onClick={handleDiscount}
@@ -512,7 +512,7 @@ const Transfer = () => {
             sx={{ marginTop: 0 }}
           >
             love discount
-          </Button>
+          </Button> */}
 
           <Button
             variant="contained"
