@@ -85,7 +85,11 @@ const Resources = () => {
 
     console.log(payload);
     //check whether the trade is valid
-    getCheck(team, resourceId);
+    try {
+      await getCheck(team, resourceId);
+    } catch (error) {
+      console.error(error);
+    }
 
     if(mode === 1){//buy
       if(teamToCheckBalance < resources[resourceId].price * number){

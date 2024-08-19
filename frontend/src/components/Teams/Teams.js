@@ -126,7 +126,7 @@ const Teams = () => {
                                 : column.id === "resources"
                                   ? `布萊德彼特幣: ${team[column.id].eecoin}`
                                   : column.id === "asset"
-                                    ? Math.round(team.money) + team.resources.eecoin * resourcePrice[0]
+                                    ? Math.round(team.money) + team.resources.eecoin * resourcePrice[0] + team.bank
                                     : team[column.id]
                             }
 
