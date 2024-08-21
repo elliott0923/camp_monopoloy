@@ -472,11 +472,9 @@ const Transfer = () => {
             }}
             helperText={errorMessage}
             FormHelperTextProps={{ error: true }}
-
-            sx={{ marginTop: 2 }}
           />
 
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -516,8 +514,7 @@ const Transfer = () => {
             >
               discount
             </Button>
-
-          </Box>
+          </Box> */}
 
           <Box
             sx={{

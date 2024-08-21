@@ -84,7 +84,7 @@ export const NPCItems = [
   {
     id: 9,
     icon: <SavingsIcon />, 
-    label: "BankTransfer",
+    label: "Bank",
     shortLabel: "BankTransfer",
     route: "banktransfer",
   },

@@ -490,6 +490,18 @@ router.post("/bankTransfer", async (req, res) => {
   res.json("Success").status(200);
 });
 
+router.post ("/bankControl", async (req, res) => {
+  const {targetTeam, dollar} = req.body;
+  const team = await Team.findOne({
+    id: targetTeam
+  });
+
+  team.bank += dollar;
+  await team.save();
+
+  res.json("Success").status(200);
+});
+
 router.post("/interest", async(req, res) => {
   const {rate} = req.body;
   const teams = await Team.find();

@@ -16,6 +16,7 @@ import {
   TableRow,
   TableCell,
   Table,
+  Grid,
   // Divider,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
@@ -27,20 +28,20 @@ import TeamSelect from "../TeamSelect";
 
 const BankTransfer = () => {
   const [targetTeam, setTargetTeam] = useState(-1);
+  const [targetBankTeam, setTargetBankTeam] = useState(-1);
   const [fromData, setFromData] = useState({});
-
-  const [building, setBuilding] = useState(-1);
-  const [buildingData, setBuildingData] = useState({});
-
-  const [count, setCount] = useState(-1);
-
-  const [finalData, setFinalData] = useState({});
+  const [fromBankData, setFromBankData] = useState({});
 
   const [amount, setAmount] = useState(0);
+  const [bankAmount, setBankAmount] = useState(0);
+
+  const [showPreview, setShowPreview] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
+  const [errorBankMessage, setErrorBankMessage] = useState("");
   const [error, setError] = useState(false);
-  const { roleId, filteredBuildings, setNavBarId } = useContext(RoleContext);
+  const [errorBank, setErrorBank] = useState(false);
+  const { setNavBarId } = useContext(RoleContext);
   const navigate = useNavigate();
 
   const handleFrom = async (from) => {
@@ -71,6 +72,38 @@ const BankTransfer = () => {
     navigate("/teams");
     setNavBarId(2);
   };
+
+  const handleTeam = async (team) => {
+    if (bankAmount !== "-" && bankAmount !== "" && targetBankTeam !== -1) {
+      setShowPreview(true);
+    } else {
+      setShowPreview(false);
+    }
+    const { data } = await axios.get("/team/" + team);
+    // console.log(data);
+    setFromBankData(data);
+    setTargetBankTeam(team);
+  };
+
+  const handleAmount = async (amount) => {
+    if (bankAmount !== "-" && bankAmount !== "" && targetBankTeam !== -1) {
+      setShowPreview(true);
+    } else {
+      setShowPreview(false);
+    }
+    setBankAmount(amount);
+  };
+
+  const handleBankClick = async() => {
+    const payload = {
+      targetTeam: targetBankTeam,
+      dollar: parseInt(bankAmount),
+    };
+
+    await axios.post("/bankControl", payload);
+    navigate("/teams");
+    setNavBarId(2);
+  }
 
   const PreviewTransfer = () => {
     return (
@@ -189,6 +222,70 @@ const BankTransfer = () => {
         </FormControl>
 
         {targetTeam !== -1  ? <PreviewTransfer /> : null}
+
+        <Box
+        sx={{
+          marginTop: 9,
+          marginBottom: 9,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography component="h1" variant="h5" sx={{ marginBottom: 0 }}>
+          Add Deposit
+        </Typography>
+
+        <Typography component="h1" variant="subtitle2" sx={{ color: 'gray' }}>
+          Directly control deposit in bank.
+        </Typography>
+          <FormControl variant="standard" sx={{ minWidth: 250 }}>
+            <TeamSelect
+              label="Team"
+              team={targetBankTeam}
+              handleTeam={handleTeam}
+              hasZero={false}
+            />
+
+            <TextField
+              required
+              label="BankAmount"
+              id="bankAmount"
+              value={bankAmount}
+              sx={{ marginTop: 2, marginBottom: 1 }}
+              onChange={(e) => {
+                const re = /^-?[0-9\b]+$/;
+                if (
+                  e.target.value === "-" ||
+                  e.target.value === "" ||
+                  re.test(e.target.value)
+                ) {
+                  if (Math.abs(parseInt(e.target.value)) > 1000000) {
+                    setErrorBankMessage("Too Large");
+                  } else {
+                    handleAmount(e.target.value ? e.target.value : "");
+                    setErrorBankMessage("");
+                  }
+                } else {
+                  setErrorBankMessage("Please enter a valid number");
+                }
+              }}
+              helperText={errorBankMessage}
+              FormHelperTextProps={{ error: true }}
+            />
+
+            <Box display="flex" flexDirection="row" justifyContent="center">
+              <Button
+                variant="contained"
+                disabled={targetBankTeam === -1 || bankAmount === ""}
+                onClick={handleBankClick}
+                fullWidth
+              >
+                <SendIcon />
+              </Button>
+            </Box>
+          </FormControl>
+        </Box>
       </Box>
     </Container>
   );

@@ -108,6 +108,19 @@ const Resources = () => {
     setNavBarId(2);
   };
 
+  const handleControlClick = async () => {
+    const payload = {
+      teamId: team,
+      resourceId: resourceId,
+      number: number,
+      mode: mode, // 0 for -, 1 for +
+    };
+
+    await axios.post("/controlResource", payload);
+    navigate("/teams");
+    setNavBarId(2);
+  };
+
   const handleTeam = (team) => {
     if (team === 0) {
       setNumber(0);
@@ -237,6 +250,108 @@ const Resources = () => {
               </FormControl>
             </Box>
           </Container>
+
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginTop: 10,
+            }}
+          >
+
+            <Typography component="h1" variant="h5">
+                  Resource Direct Control
+            </Typography>
+
+            <Typography component="h1" variant="subtitle2" sx={{ color: 'gray' }}>
+              CAUTION: This part will control the resource without charging money.
+            </Typography>
+
+            <FormControl
+                variant="standard"
+                sx={{ minWidth: 250, marginTop: 2 }}
+            >
+              <TeamSelect
+                label="Team"
+                team={team}
+                handleTeam={handleTeam}
+                hasZero={false}
+              />
+            </FormControl>
+
+            <FormControl
+              variant="standard"
+              sx={{ minWidth: 250, marginTop: 2 }}
+            >
+              <InputLabel id="resource">Resource</InputLabel>
+              <Select
+                value={resourceId}
+                labelId="resource"
+                onChange={(e) => {
+                  setResourceId(e.target.value);
+                }}
+              >
+                <MenuItem value={-1}>Select Resource</MenuItem>
+                {resources.map((resource, index) => (
+                  <MenuItem value={index} key={index}>
+                    {resource.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl
+              variant="standard"
+              sx={{ minWidth: 250, marginTop: 2 }}
+            >
+              <InputLabel id="mode">Mode</InputLabel>
+              <Select
+                value={mode}
+                labelId="mode"
+                onChange={(e) => {
+                  setMode(e.target.value);
+                }}
+              >
+                <MenuItem value={0}>-</MenuItem>
+                <MenuItem value={1}>+</MenuItem>
+              </Select>
+            </FormControl>
+
+            <FormControl
+                variant="standard"
+                sx={{ minWidth: 250, marginTop: 2 }}
+              >
+                <TextField
+                  required
+                  label="enter the amount"
+                  id="number"
+                  // autoComplete="enter the number"
+                  type="text"
+                  // sx={{ marginTop: 1, marginBottom: 1 }}
+                  autoFocus
+                  onChange={(e) => {
+                    setNumber(e.target.value);
+                  }}
+                />
+            </FormControl>
+
+            <FormControl
+              variant="standard"
+              sx={{ minWidth: 250, marginTop: 2 }}
+            >
+              <Button
+                variant="contained"
+                disabled={team === -1 || number === -1}
+                onClick={handleControlClick}
+                fullWidth
+                sx={{ marginTop: 2 }}
+              >
+                <SendIcon />
+              </Button>
+            </FormControl>
+          </Box>
 
           <Paper
             elevation={0}
