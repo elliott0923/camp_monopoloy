@@ -540,22 +540,103 @@ router
           break;
         case 1: // 山賊入侵，各組金錢減少30%。
           {
-            const teams = await Team.find();
-            for (let i = 0; i < teams.length; i++) {
-              teams[i].money  = teams[i].money * 0.7;
-              await teams[i].save();
-            }
+            const resources = await Resource.find();
+            //update all resources price
+            resources[0].price = Number(15000);
+            //save the update
+            await resources[0].save();
+
+            console.log("event 1");
+
             res.json("Success").status(200);
           }
           break;
-        case 6: // 屠魔令，所有資源減少50%
+
+        case 2:
           {
+            const resources = await Resource.find();
+            //update all resources price
+            resources[0].price = Number(30000);
+            await resources[0].save();
+
+            res.json("Success").status(200);
+          }
+          break;
+
+        case 3:
+          {
+            const resources = await Resource.find();
+            //update all resources price
+            resources[0].price = Number(1000);
+            await resources[0].save();
+
+            res.json("Success").status(200);
+          }
+          break;
+
+        case 4:
+          {
+            const resources = await Resource.find();
+            //update all resources price
+            resources[0].price = Number(2000);
+            await resources[0].save();
+
             const teams = await Team.find();
-            for (let i = 0; i < teams.length; i++) {
-              teams[i].resources.eecoin = Math.round(teams[i].resources.eecoin * 0.5);
-              teams[i].resources.love = Math.round(teams[i].resources.love * 0.5);
+
+            for(let i = 0; i < teams.length; i++) {
+              teams[i].bank = Math.round(teams[i].bank * 0.5);
               await teams[i].save();
             }
+
+            res.json("Success").status(200);
+          }
+          break;
+
+        case 5:
+          {
+            const resources = await Resource.find();
+            //update all resources price
+            resources[0].price = Number(3000);
+            await resources[0].save();
+
+            res.json("Success").status(200);
+          }
+          break;
+
+        case 6: // 屠魔令，所有資源減少50%
+          {
+            const resources = await Resource.find();
+            //update all resources price
+            resources[0].price = Number(18000);
+            await resources[0].save();
+
+            res.json("Success").status(200);
+          }
+          break;
+        case 7:
+          {
+            const resources = await Resource.find();
+            //update all resources price
+            resources[0].price = Number(16000);
+            await resources[0].save();
+
+            const teams = await Team.find();
+
+            for (let i = 0; i < teams.length; i++) {
+              teams[i].bank = Math.round(teams[i].money * 0.9);
+              await teams[i].save();
+            }
+
+            res.json("Success").status(200);
+          }
+          break;
+        case 8:
+          {
+            const resources = await Resource.find();
+            //update all resources price
+            resources[0].price = Number(1000);
+            await resources[0].save();
+
             res.json("Success").status(200);
           }
           break;
