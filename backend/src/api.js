@@ -521,6 +521,31 @@ router.get("/allEvents", async (req, res) => {
   res.json(events).status(200);
 });
 
+router.post("/reset", async(req, res) =>{
+  console.log("RESET");
+
+  //reset everything
+  const teams = await Team.find();
+  const resources = await Resource.find();
+
+  for(let i = 0; i < teams.length; i++) {
+    teams[i].money = 40000;
+    teams[i].bank = 0;
+    teams[i].resources.eecoin = 0;
+    await teams[i].save();
+  }
+
+  resources[0].price = 10000;
+
+  const lands = await Land.find();
+  //set all lands to 0
+  for(let i = 0; i < lands.length; i++) {
+    lands[i].owner = 0;
+    lands[i].level = 0;
+    await lands[i].save();
+  }
+})
+
 router
   .post("/event", async (req, res) => {
     const { id } = req.body;
@@ -584,7 +609,7 @@ router
             const teams = await Team.find();
 
             for(let i = 0; i < teams.length; i++) {
-              teams[i].bank = Math.round(teams[i].bank * 0.5);
+              teams[i].bank = 0;
               await teams[i].save();
             }
 
@@ -623,7 +648,7 @@ router
             const teams = await Team.find();
 
             for (let i = 0; i < teams.length; i++) {
-              teams[i].bank = Math.round(teams[i].money * 0.9);
+              teams[i].money = Math.round(teams[i].money * 0.5);
               await teams[i].save();
             }
 
@@ -636,6 +661,18 @@ router
             //update all resources price
             resources[0].price = Number(1000);
             await resources[0].save();
+
+            //For each land the team owns, reduce the money by 5000
+            const lands = await Land.find();
+            for (let i = 0; i < lands.length; i++) {
+              console.log(`land ${lands[i].id} owner: ${lands[i].owner}`);
+
+              if (lands[i].owner !== 0 && lands[i].level > 1) {
+                const team = await Team.findOne({ id: lands[i].owner });
+                team.money -= 5000 * (lands[i].level - 1);
+                await team.save();
+              }
+            }
 
             res.json("Success").status(200);
           }

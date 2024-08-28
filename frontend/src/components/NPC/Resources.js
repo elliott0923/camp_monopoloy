@@ -59,14 +59,6 @@ const Resources = () => {
       .then((res) => {
         setTeamToCheckBalance(res.data.money);
 
-        if(resourceId == 0){
-          setResourceToCheckQuan(res.data.resources.love);
-          console.log(res.data.resources.love);
-          console.log(resourceToCheckQuan);
-        }else if(resourceId == 1){
-          setResourceToCheckQuan(res.data.resources.eecoin);
-        }
-
         console.log(resourceToCheckQuan);
       })
       .catch((error) => {
@@ -126,6 +118,13 @@ const Resources = () => {
       setNumber(0);
     }
     setTeam(team);
+
+    try {
+      getCheck(team, resourceId);
+    } catch (error) {
+      console.error(error);
+    }
+    
   };
 
   const updatePrices = async () => {

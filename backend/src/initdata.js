@@ -207,7 +207,7 @@ const resources = [
 ]
 
 const lands = [
-  { id: 1, type: "Game", name: "詞語接龍", description: "認真聽規則！" },
+  { id: 1, type: "Game", name: "詞語接龍", description: "認真聽規則！", owner: 0},
   {
     id: 2,
     type: "Building",
@@ -217,7 +217,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 10000, upgrade: 5000 },
-    rent: [4000, 6000, 8000],
+    rent: [4000, 8000, 12000],
   },
   {
     id: 3,
@@ -228,7 +228,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 12000, upgrade: 6000 },
-    rent: [6000, 8000, 10000],
+    rent: [6000, 10000, 14000],
   },
   {
     id: 4,
@@ -239,11 +239,11 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 14000, upgrade: 7000 },
-    rent: [8000, 10000, 12000],
+    rent: [8000, 12000, 16000],
   },
-  { id: 5, type: "Transport", name: "轉運站", description: "運氣不好?那就來轉運站!" },
-  { id: 6, type: "Game", name: "猜歌名", description: "認真聽規則！" },
-  { id: 7, type: "Bank", name: "銀行", description: "存錢拿利息" },
+  { id: 5, type: "Transport", name: "轉運站", description: "運氣不好?那就來轉運站!" , owner: 0},
+  { id: 6, type: "Game", name: "猜歌名", description: "認真聽規則！", owner: 0 },
+  { id: 7, type: "Bank", name: "銀行", description: "存錢拿利息", owner: 0 },
   {
     id: 8,
     type: "Building",
@@ -252,8 +252,8 @@ const lands = [
     owner: 0,
     level: 0,
     buffed: 0,
-    price: { buy:10000, upgrade: 5000 },
-    rent: [4000, 6000, 8000],
+    price: { buy: 10000, upgrade: 5000 },
+    rent: [4000, 8000, 12000],
   },
   {
     id: 9,
@@ -264,7 +264,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy:12000, upgrade: 6000 },
-    rent: [6000, 8000, 10000],
+    rent: [6000, 10000, 14000],
   },
   {
     id: 10,
@@ -275,28 +275,31 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy:14000, upgrade: 7000 },
-    rent: [8000, 10000, 12000],
+    rent: [8000, 12000, 16000],
   },
-  { id: 11, type: "Game", name: "排列組合期末考", description: "認真聽規則！" },
+  { id: 11, type: "Game", name: "排列組合期末考", description: "認真聽規則！", owner: 0 },
   {
     id: 12,
     type: "Jail",
     name: "尬電大監獄",
     description: "進監獄囉，真爽",
+    owner: 0,
   },
   {
     id: 13,
     type: "Chance",
     name: "機會",
     description: "為你的未來重新洗牌！",
+    owner: 0,
   },
   {
     id: 14,
     type: "Chance",
     name: "命運",
     description: "為你的未來重新洗牌！",
+    owner : 0,
   },
-  { id: 15, type: "Game", name: "紙飛機", description: "認真聽規則！" },
+  { id: 15, type: "Game", name: "紙飛機", description: "認真聽規則！", owner: 0 },
   {
     id: 16,
     type: "Building",
@@ -306,7 +309,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 10000, upgrade: 5000 },
-    rent: [4000, 6000, 8000],
+    rent: [4000, 8000, 12000],
   },
   {
     id: 17,
@@ -317,7 +320,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 12000, upgrade: 6000 },
-    rent: [6000, 8000, 10000],
+    rent: [6000, 10000, 14000],
   },
   {
     id: 18,
@@ -328,10 +331,10 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 14000, upgrade: 7000 },
-    rent: [8000, 10000, 12000],
+    rent: [8000, 12000, 16000],
   },
-  { id: 19, type: "Arena", name: "唬爛王", description: "來決鬥吧！" },
-  { id: 20, type: "Game", name: "猜英文歌", description: "認真聽規則！" },
+  { id: 19, type: "Arena", name: "唬爛王", description: "來決鬥吧！", owner: 0 },
+  { id: 20, type: "Game", name: "猜英文歌", description: "認真聽規則！" , owner: 0},
   {
     id: 21,
     type: "Building",
@@ -341,7 +344,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 10000, upgrade: 5000 },
-    rent: [4000, 6000, 8000],
+    rent: [4000, 8000, 12000],
   },
   {
     id: 22,
@@ -352,7 +355,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 12000, upgrade: 6000 },
-    rent: [6000, 8000, 10000],
+    rent: [6000, 10000, 14000],
   },
   {
     id: 23,
@@ -363,20 +366,22 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 14000, upgrade: 7000 },
-    rent: [8000, 10000, 12000],
+    rent: [8000, 12000, 16000],
   },
-  { id: 24, type: "Game", name: "注音猜詞", description: "認真聽規則！" },
+  { id: 24, type: "Game", name: "注音猜詞", description: "認真聽規則！", owner: 0 },
   {
     id: 25,
     type: "Chance",
     name: "機會",
     description: "為你的未來重新洗牌！",
+    owner: 0,
   },
   {
     id: 26,
     type: "Chance",
     name: "命運",
     description: "為你的未來重新洗牌！",
+    owner: 0,
   },
   {
     id: 27,
@@ -387,7 +392,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 10000, upgrade: 5000 },
-    rent: [4000, 6000, 8000],
+    rent: [4000, 8000, 12000],
   },
   {
     id: 28,
@@ -398,7 +403,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 12000, upgrade: 6000 },
-    rent: [6000, 8000, 10000],
+    rent: [6000, 10000, 14000],
   },
   {
     id: 29,
@@ -409,23 +414,25 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 14000, upgrade: 7000 },
-    rent: [8000, 10000, 12000],
+    rent: [8000, 12000, 16000],
   },
-  { id: 30, type: "Game", name: "猜古文", description: "認真聽規則！" },
+  { id: 30, type: "Game", name: "猜古文", description: "認真聽規則！", owner: 0 },
   {
     id: 31,
     type: "Chance",
     name: "機會",
     description: "為你的未來重新洗牌！",
+    owner: 0,
   },
   {
     id: 32,
     type: "Chance",
     name: "命運",
     description: "為你的未來重新洗牌！",
+    owner: 0,
   },
-  { id: 33, type: "Transport", name: "轉運站", description: "運氣不好?那就來轉運站!" },
-  { id: 34, type: "Arena", name: "碰撞機器人", description: "來決鬥吧！" },
+  { id: 33, type: "Transport", name: "轉運站", description: "運氣不好?那就來轉運站!", owner: 0 },
+  { id: 34, type: "Arena", name: "碰撞機器人", description: "來決鬥吧！", owner: 0 },
   {
     id: 35,
     type: "Building",
@@ -435,7 +442,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 10000, upgrade: 5000 },
-    rent: [4000, 6000, 8000],
+    rent: [4000, 8000, 12000],
   },
   {
     id: 36,
@@ -446,7 +453,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 12000, upgrade: 6000 },
-    rent: [6000, 8000, 10000],
+    rent: [6000, 10000, 14000],
   },
   {
     id: 37,
@@ -457,7 +464,7 @@ const lands = [
     level: 0,
     buffed: 0,
     price: { buy: 14000, upgrade: 7000 },
-    rent: [8000, 10000, 12000],
+    rent: [8000, 12000, 16000],
   },
 ];
 
@@ -486,7 +493,7 @@ const events = [
   {
     id: 4,
     title: "銀行倒閉，金融危機",
-    description: "扣銀行50%的錢去修建銀行，這段期間銀行暫停所有功能",
+    description: "銀行倒了，裡面所有的錢都拿去修建銀行，這段期間銀行暫停所有功能",
   },
   {
     id: 5,
@@ -508,7 +515,7 @@ const events = [
     id: 8,
     title: "地震",
     description:
-      "黃昱翔脫褲子，他都在系K隨意大小便",
+      "一棟房子扣5000",
   },
 ];
 

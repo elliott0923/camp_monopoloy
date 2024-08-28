@@ -25,6 +25,14 @@ const Map = () => {
             userSelect: "none",
           }}
         />
+        <img
+          src="/playground.jpg"
+          alt="Map"
+          style={{
+            maxWidth: "100%",
+            userSelect: "none",
+          }}
+        />
       </Box>
     </Container>
   );

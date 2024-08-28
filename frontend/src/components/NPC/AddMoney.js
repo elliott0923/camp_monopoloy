@@ -275,9 +275,9 @@ const AddMoney = () => {
               justifyContent: "space-between",
             }}
           >
-            <SimpleMoneyButton val={+100} />
-            <SimpleMoneyButton val={+1000} />
-            <SimpleMoneyButton val={+5000} />
+            <SimpleMoneyButton val={+4000} />
+            <SimpleMoneyButton val={+10000} />
+            <SimpleMoneyButton val={+16000} />
           </Box>
           <Box
             sx={{
@@ -286,9 +286,9 @@ const AddMoney = () => {
               justifyContent: "space-between",
             }}
           >
-            <SimpleMoneyButton val={-100} />
-            <SimpleMoneyButton val={-1000} />
-            <SimpleMoneyButton val={-5000} />
+            <SimpleMoneyButton val={+2000} />
+            <SimpleMoneyButton val={+3000} />
+            <SimpleMoneyButton val={+5000} />
           </Box>
           <Box
             sx={{
