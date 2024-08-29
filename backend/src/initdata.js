@@ -509,7 +509,7 @@ const events = [
     id: 7,
     title: "納稅",
     description:
-      "全隊上交手頭10%的錢",
+      "全隊上交手頭50%的現金",
   },
   {
     id: 8,

@@ -57,7 +57,11 @@ const Resources = () => {
     axios
       .get("/team/" + team)
       .then((res) => {
+        console.log(resourceId);
+        console.log(res.data.resources[resourceId - 1]);
+
         setTeamToCheckBalance(res.data.money);
+        setResourceToCheckQuan(res.data.resources[resourceId - 1]);
 
         console.log(resourceToCheckQuan);
       })
