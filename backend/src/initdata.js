@@ -179,18 +179,18 @@ const teams = [
     bonus: { value: 1.0, time: 0, duration: 0 },
     soulgem: { value: false, time: 0 },
   },
-  {
-    id: 10,
-    teamname: "第10小隊",
-    // occupation: "N/A",
-    money: 40000,
-    bank: 0,
-    deposit: 0,
-    resourcesName: {  eecoin: "EE幣" },
-    resources: {  eecoin: 0, cola: 0, wood: 0, metal: 0 },
-    bonus: { value: 1.0, time: 0, duration: 0 },
-    soulgem: { value: false, time: 0 },
-  },
+  // {
+  //   id: 10,
+  //   teamname: "第10小隊",
+  //   // occupation: "N/A",
+  //   money: 40000,
+  //   bank: 0,
+  //   deposit: 0,
+  //   resourcesName: {  eecoin: "EE幣" },
+  //   resources: {  eecoin: 0, cola: 0, wood: 0, metal: 0 },
+  //   bonus: { value: 1.0, time: 0, duration: 0 },
+  //   soulgem: { value: false, time: 0 },
+  //},
 ];
 
 const resources = [
@@ -482,8 +482,8 @@ const events = [
   },
   {
     id: 2,
-    title: "逃犯越獄",
-    description: "獄卒氣憤不已，隨機抽取3支隊伍當替死鬼進監獄",
+    title: "財富洗牌",
+    description: "第1名和第9名、第2名和第8名…現金互換，中位數保持不變",
   },
   {
     id: 3,
@@ -492,9 +492,15 @@ const events = [
   },
   {
     id: 4,
-    title: "銀行倒閉，金融危機",
-    description: "銀行倒了，裡面所有的錢都拿去修建銀行，這段期間銀行暫停所有功能",
+    title: "普發一萬元但沒錢所以加蓋房屋",
+    description: "每個小隊的地產格都可以升級一次(加蓋房屋)，銀行利率變成20%",
   },
+
+  // {
+  //   id: 4,
+  //   title: "銀行倒閉，金融危機",
+  //   description: "銀行倒了，裡面所有的錢都拿去修建銀行，這段期間銀行暫停所有功能",
+  //},
   {
     id: 5,
     title: "富翁掉錢",
@@ -507,16 +513,27 @@ const events = [
   },
   {
     id: 7,
-    title: "納稅",
+    title: "資本主義",
     description:
-      "全隊上交手頭50%的現金",
+      "布萊德彼特幣大漲",
   },
   {
     id: 8,
-    title: "地震",
+    title: "批鬥地主",
     description:
       "一棟房子扣5000",
   },
+  {
+    id: 9,
+    title: "讓美國再次偉大",
+    description: "銀行的錢拿走５０%",
+  },
+  {
+    id: 10,
+    title: "文化大革命",
+    description: "有房子的小隊，隨機被破壞移除一棟房子，銀行利率變成50%",
+  }
+
 ];
 
 // const effects = [

@@ -28,7 +28,7 @@ const Teams = () => {
 
   const getTeams = async () => {
     axios
-      .get("/team")
+      .get("/team")//res 
       .then((res) => {
         setTeams(res.data);
       })
@@ -58,7 +58,7 @@ const Teams = () => {
     }, 5000);
     return () => clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []);//隨時監測
 
   if (teams.length === 0) {
     return <Loading />;

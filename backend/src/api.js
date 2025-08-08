@@ -470,7 +470,7 @@ router.post("/sell", async (req, res) => {
   const team = await Team.findOne({ id: land.owner });
 
   const price = calcSellPrice(land, forced);
-  // team.money += price;
+  // team.money += price
   // await team.save();
   await updateTeam(land.owner, price, req.io, true);
   await Land.findOneAndUpdate({ id: landId }, { owner: 0, level: 0 });
@@ -563,7 +563,7 @@ router
         default: 
           res.json("Success").status(200);
           break;
-        case 1: // 山賊入侵，各組金錢減少30%。
+        case 1: // 反安倍三支箭，銀行升息為 30%，各隊銀行存款已更新
           {
             const resources = await Resource.find();
             //update all resources price
@@ -571,95 +571,210 @@ router
             //save the update
             await resources[0].save();
 
-            console.log("event 1");
+            const rate = 1.3;
+            const teams = await Team.find();
+
+            for (let i = 0; i < teams.length; i++) {
+              teams[i].bank = Math.round(teams[i].bank * rate);
+              await teams[i].save();
+              console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
+            }
+
+              // 可以加上一個廣播通知（選擇性）
+              // req.io.emit("broadcast", {
+              //   title: "反安倍三支箭",
+              //   description: "銀行升息為 30%，各隊銀行存款已更新",
+              //   level: 0,
+              // });
 
             res.json("Success").status(200);
+
+            
+
+            // console.log("event 1");
+
+            // res.json("Success").status(200);
           }
           break;
-
-        case 2:
+        case 2://財富洗牌
           {
+
             const resources = await Resource.find();
             //update all resources price
             resources[0].price = Number(30000);
             await resources[0].save();
+            const teams = await Team.find().sort({ money: -1 }); // 按現金由多到少排序
 
-            res.json("Success").status(200);
+            if (teams.length < 9) {
+              return res.status(400).json("隊伍數量不足 9 隊，無法對調");
+            }
+
+            const swapPairs = [
+              [0, 8], // 第1名（index 0）<-> 第9名（index 8）
+              [1, 7], // 第2名 <-> 第8名
+              [2, 6], // 第3名 <-> 第7名
+              [3, 5], // 第4名 <-> 第6名
+            ];
+
+            for (const [i, j] of swapPairs) {
+              const tmp = teams[i].money;
+              teams[i].money = teams[j].money;
+              teams[j].money = tmp;
+              await teams[i].save();
+              await teams[j].save();
+            }
+
+            // 中位數隊伍（第5名）不用動
+            //await teams[4].save();
+
+            
+
+
+            const rate = 1.1;
+            // 更新所有隊伍的銀行存款
+
+            
+            for (let i = 0; i < teams.length; i++) {
+              teams[i].bank = Math.round(teams[i].bank * rate);
+              await teams[i].save();
+              console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
+            }
+            res.status(200).json("Success");
           }
           break;
+        // case 2:
+        //   {
+        //     const resources = await Resource.find();
+        //     //update all resources price
+        //     resources[0].price = Number(30000);
+        //     await resources[0].save();
 
-        case 3:
+        //     res.json("Success").status(200);
+        //   }
+        //   break;
+
+        case 3://馬斯克發廢文 布萊德比特幣暴跌
           {
             const resources = await Resource.find();
             //update all resources price
             resources[0].price = Number(1000);
             await resources[0].save();
+            const rate = 1.1;
+            const teams = await Team.find();
 
+            for (let i = 0; i < teams.length; i++) {
+              teams[i].bank = Math.round(teams[i].bank * rate);
+              await teams[i].save();
+              console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
+            }
             res.json("Success").status(200);
           }
           break;
 
-        case 4:
+        case 4://普發一萬元但沒錢所以加蓋房屋
           {
+
             const resources = await Resource.find();
             //update all resources price
             resources[0].price = Number(2000);
+            //save the update
             await resources[0].save();
 
+            const rate = 1.2;
             const teams = await Team.find();
 
-            for(let i = 0; i < teams.length; i++) {
-              teams[i].bank = 0;
+            for (let i = 0; i < teams.length; i++) {
+              teams[i].bank = Math.round(teams[i].bank * rate);
               await teams[i].save();
+              console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
             }
+            //bankruptcy code
+            // const resources = await Resource.find();
+            // //update all resources price
+            // resources[0].price = Number(2000);
+            // await resources[0].save();
+
+            // const teams = await Team.find();
+
+            // for(let i = 0; i < teams.length; i++) {
+            //   teams[i].bank = 0;
+            //   await teams[i].save();
+            // }
 
             res.json("Success").status(200);
           }
           break;
 
-        case 5:
+        case 5://富翁掉錢
           {
             const resources = await Resource.find();
             //update all resources price
             resources[0].price = Number(3000);
             await resources[0].save();
+            const rate = 1.1;
+            const teams = await Team.find();
+
+            for (let i = 0; i < teams.length; i++) {
+              teams[i].bank = Math.round(teams[i].bank * rate);
+              await teams[i].save();
+              console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
+            }
+
 
             res.json("Success").status(200);
           }
           break;
 
-        case 6: // 屠魔令，所有資源減少50%
+        case 6: //男同俱樂部
           {
             const resources = await Resource.find();
             //update all resources price
-            resources[0].price = Number(18000);
+            resources[0].price = Number(5000);
             await resources[0].save();
+            const rate = 1.1;
+            const teams = await Team.find();
+
+            for (let i = 0; i < teams.length; i++) {
+              teams[i].bank = Math.round(teams[i].bank * rate);
+              await teams[i].save();
+              console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
+            }
+
+
 
             res.json("Success").status(200);
           }
           break;
-        case 7:
+        case 7://資本主義
           {
             const resources = await Resource.find();
             //update all resources price
             resources[0].price = Number(16000);
             await resources[0].save();
 
+            // const teams = await Team.find();
+
+            // for (let i = 0; i < teams.length; i++) {
+            //   teams[i].money = Math.round(teams[i].money * 0.5);
+            //   await teams[i].save();
+            // }
+            const rate = 1.1;
             const teams = await Team.find();
 
             for (let i = 0; i < teams.length; i++) {
-              teams[i].money = Math.round(teams[i].money * 0.5);
+              teams[i].bank = Math.round(teams[i].bank * rate);
               await teams[i].save();
+              console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
             }
 
             res.json("Success").status(200);
           }
           break;
-        case 8:
+        case 8://批鬥地主
           {
             const resources = await Resource.find();
             //update all resources price
-            resources[0].price = Number(1000);
+            resources[0].price = Number(16000);
             await resources[0].save();
 
             //For each land the team owns, reduce the money by 5000
@@ -667,9 +782,9 @@ router
             for (let i = 0; i < lands.length; i++) {
               console.log(`land ${lands[i].id} owner: ${lands[i].owner}`);
 
-              if (lands[i].owner !== 0 && lands[i].level > 1) {
+              if (lands[i].owner !== 0 && lands[i].level > 0) {
                 const team = await Team.findOne({ id: lands[i].owner });
-                team.money -= 5000 * (lands[i].level - 1);
+                team.money -= 5000 * (lands[i].level);
                 await team.save();
               }
             }
@@ -677,6 +792,43 @@ router
             res.json("Success").status(200);
           }
           break;
+        case 9://讓美國再次偉大
+          {
+            const resources = await Resource.find();
+            //update all resources price
+            resources[0].price = Number(15000);
+            await resources[0].save();
+            const rate = 0.5;
+            const teams = await Team.find();
+
+            for (let i = 0; i < teams.length; i++) {
+              teams[i].bank = Math.round(teams[i].bank * rate);
+              await teams[i].save();
+              console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
+            }
+
+            res.json("Success").status(200);
+          }
+          break;
+        case 10://文化大革命
+          {
+            const resources = await Resource.find();
+            //update all resources price
+            resources[0].price = Number(15000);
+            await resources[0].save();
+            // const rate = 1;
+            // const teams = await Team.find();
+
+            // for (let i = 0; i < teams.length; i++) {
+            //   teams[i].bank = Math.round(teams[i].bank * rate);
+            //   await teams[i].save();
+            //   console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
+            // }
+
+            res.json("Success").status(200);
+            
+
+          }
         // case 3: // 來幫臺灣衝經濟嘍, 每個小隊普發$10000。
         //   {
         //     const teams = await Team.find();
