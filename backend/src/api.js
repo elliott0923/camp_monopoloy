@@ -784,7 +784,7 @@ router
 
               if (lands[i].owner !== 0 && lands[i].level > 0) {
                 const team = await Team.findOne({ id: lands[i].owner });
-                team.money -= 5000 * (lands[i].level);
+                team.money -= 2000 * (lands[i].level);
                 await team.save();
               }
             }
@@ -816,14 +816,14 @@ router
             //update all resources price
             resources[0].price = Number(15000);
             await resources[0].save();
-            // const rate = 1;
-            // const teams = await Team.find();
+            const rate = 1.1;
+            const teams = await Team.find();
 
-            // for (let i = 0; i < teams.length; i++) {
-            //   teams[i].bank = Math.round(teams[i].bank * rate);
-            //   await teams[i].save();
-            //   console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
-            // }
+            for (let i = 0; i < teams.length; i++) {
+              teams[i].bank = Math.round(teams[i].bank * rate);
+              await teams[i].save();
+              console.log(`team ${teams[i].teamname} bank: ${teams[i].bank}`);
+            }
 
             res.json("Success").status(200);
             
