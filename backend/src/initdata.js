@@ -536,7 +536,7 @@ const events = [
     id: 8,
     title: "批鬥地主",
     description:
-      "一棟房子扣5000",
+      "一棟房子扣2000，等級越高扣越多",
   },
   {
     id: 9,
@@ -546,7 +546,7 @@ const events = [
   {
     id: 10,
     title: "文化大革命",
-    description: "有房子的小隊，隨機被破壞移除一棟房子，銀行利率變成50%",
+    description: "有房子的小隊，隨機被破壞移除一棟房子",
   }
 
 ];
