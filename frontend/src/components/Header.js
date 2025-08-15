@@ -95,7 +95,7 @@ const Header = () => {
     <Grid container>
       <AppBar position="fixed" sticky="top">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <IconButton onClick={handleChange}>
+          <IconButton onClick={handleChange} sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
             <MenuIcon />
             <NavBar open={open} />
           </IconButton>
