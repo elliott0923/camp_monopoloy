@@ -508,7 +508,7 @@ const events = [
   {
     id: 4,
     title: "普發一萬元但沒錢所以加蓋房屋",
-    description: "每個小隊的地產格都可以升級一次(加蓋房屋)，銀行利率變成20%",
+    description: "每個小隊的地產格都可以升級一次(加蓋房屋)",
   },
 
   // {
@@ -541,7 +541,7 @@ const events = [
   {
     id: 9,
     title: "讓美國再次偉大",
-    description: "銀行的錢拿走５０%",
+    description: "銀行的錢拿走50%",
   },
   {
     id: 10,

@@ -24,7 +24,6 @@ const TeamSelect = ({ label, team, handleTeam, hasZero, sx }) => {
         <MenuItem value={7}>第07小隊</MenuItem>
         <MenuItem value={8}>第08小隊</MenuItem>
         <MenuItem value={9}>第09小隊</MenuItem>
-        <MenuItem value={10}>第10小隊</MenuItem>
       </Select>
     </>
   );
