@@ -207,7 +207,7 @@ const resources = [
 ]
 
 const lands = [
-  { id: 1, type: "Game", name: "詞語接龍", description: "認真聽規則！", owner: 0},
+  { id: 1, type: "Game", name: "排列組合期中考", description: "認真聽規則！", owner: 0},
   {
     id: 2,
     type: "Building",
@@ -241,7 +241,6 @@ const lands = [
     price: { buy: 14000, upgrade: 7000 },
     rent: [8000, 12000, 16000],
   },
-  //{ id: 5, type: "Transport", name: "轉運站", description: "運氣不好?那就來轉運站!" , owner: 0},
   { id: 5, type: "Game", name: "猜歌名", description: "認真聽規則！", owner: 0 },
   { id: 6, type: "Bank", name: "銀行", description: "存錢拿利息", owner: 0 },
   {
@@ -295,7 +294,7 @@ const lands = [
   {
     id: 13,
     type: "Building",
-    name: "大型地產--飯店",
+    name: "大型地產 - 地寶",
     description: "決定要公園、飯店、轉運站",
     owner: 0,
     level: 0,
@@ -305,8 +304,8 @@ const lands = [
   },
   {
     id: 14,
-    type: "Building",
-    name: "大型地產--轉運站",
+    type: "Building",    
+    name: "大型地產 - 地寶",
     description: "決定要公園、飯店、轉運站",
     owner: 0,
     level: 0,
@@ -393,13 +392,28 @@ const lands = [
   },
   {
     id: 26,
-    type: "Chance",
-    name: "命運",
-    description: "為你的未來重新洗牌！",
+    type: "Building",
+    name: "大型地產 - 地王",
+    description: "決定要公園、飯店、轉運站",
     owner: 0,
+    level: 0,
+    buffed: 0,
+    price: { buy:15000, upgrade: 10000 },
+    rent: [3000, 4000, 5000],
   },
   {
     id: 27,
+    type: "Building",    
+    name: "大型地產 - 地王",
+    description: "決定要公園、飯店、轉運站",
+    owner: 0,
+    level: 0,
+    buffed: 0,
+    price: { buy:15000, upgrade: 10000 },
+    rent: [8000, 12000, 16000],
+  },
+  {
+    id: 28,
     type: "Building",
     area: 1,
     name: "違規取地",
@@ -410,7 +424,7 @@ const lands = [
     rent: [4000, 8000, 12000],
   },
   {
-    id: 28,
+    id: 29,
     type: "Building",
     area: 1,
     name: "五體投地",
@@ -421,7 +435,7 @@ const lands = [
     rent: [6000, 10000, 14000],
   },
   {
-    id: 29,
+    id: 30,
     type: "Building",
     area: 1,
     name: "腳踏實地",
@@ -431,22 +445,21 @@ const lands = [
     price: { buy: 14000, upgrade: 7000 },
     rent: [8000, 12000, 16000],
   },
-  { id: 30, type: "Game", name: "猜古文", description: "認真聽規則！", owner: 0 },
+  { id: 31, type: "Game", name: "比手畫腳", description: "認真聽規則！", owner: 0 },
   {
-    id: 31,
+    id: 32,
     type: "Chance",
     name: "機會",
     description: "為你的未來重新洗牌！",
     owner: 0,
   },
   {
-    id: 32,
+    id: 33,
     type: "Chance",
     name: "命運",
     description: "為你的未來重新洗牌！",
     owner: 0,
   },
-  { id: 33, type: "Transport", name: "轉運站", description: "運氣不好?那就來轉運站!", owner: 0 },
   { id: 34, type: "Arena", name: "碰撞機器人", description: "來決鬥吧！", owner: 0 },
   {
     id: 35,
@@ -707,3 +720,4 @@ db.once("open", async () => {
 
   console.log("finish saving data");
 });
+
